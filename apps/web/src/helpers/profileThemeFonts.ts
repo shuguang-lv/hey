@@ -3,6 +3,7 @@ import {
   Archivo_Narrow,
   Arimo,
   BioRhyme,
+  DM_Sans,
   Eczar,
   Gaegu,
   IBM_Plex_Mono,
@@ -10,7 +11,9 @@ import {
   Inconsolata,
   Inter,
   Inter_Tight,
+  Josefin_Sans,
   Karla,
+  Karma,
   Libre_Baskerville,
   Nunito,
   Playfair_Display,
@@ -21,7 +24,8 @@ import {
   Space_Mono,
   Spline_Sans,
   Spline_Sans_Mono,
-  Work_Sans
+  Work_Sans,
+  Zilla_Slab
 } from "next/font/google";
 
 export enum Font {
@@ -47,7 +51,11 @@ export enum Font {
   IBMPlexMono = "ibmPlexMono",
   Gaegu = "gaegu",
   Eczar = "eczar",
-  BioRhyme = "bioRhyme"
+  BioRhyme = "bioRhyme",
+  ZillaSlab = "zillaSlab",
+  Karma = "karma",
+  DMSans = "dmSans",
+  JosefinSans = "josefinSans"
 }
 
 const archivo = Archivo({ subsets: ["latin"], weight: ["400", "700"] });
@@ -94,6 +102,13 @@ const ibmPlexMono = IBM_Plex_Mono({
 const gaegu = Gaegu({ subsets: ["latin"], weight: ["400", "700"] });
 const eczar = Eczar({ subsets: ["latin"], weight: ["400", "700"] });
 const bioRhyme = BioRhyme({ subsets: ["latin"], weight: ["400", "700"] });
+const zillaSlab = Zilla_Slab({ subsets: ["latin"], weight: ["400", "700"] });
+const karma = Karma({ subsets: ["latin"], weight: ["400", "700"] });
+const dmSans = DM_Sans({ subsets: ["latin"], weight: ["400", "700"] });
+const josefinSans = Josefin_Sans({
+  subsets: ["latin"],
+  weight: ["400", "700"]
+});
 
 const profileThemeFonts = (id: string | undefined): string => {
   if (!id) {
@@ -147,6 +162,14 @@ const profileThemeFonts = (id: string | undefined): string => {
       return eczar.className;
     case Font.BioRhyme:
       return bioRhyme.className;
+    case Font.ZillaSlab:
+      return zillaSlab.className;
+    case Font.Karma:
+      return karma.className;
+    case Font.DMSans:
+      return dmSans.className;
+    case Font.JosefinSans:
+      return josefinSans.className;
     default:
       return "";
   }

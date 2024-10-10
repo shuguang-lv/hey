@@ -26,12 +26,6 @@ export type AllowedToken = {
   symbol: string;
 };
 
-export type MembershipNft = {
-  createdAt: Date;
-  dismissedOrMinted: boolean;
-  id: string;
-};
-
 export type CollectModuleType = {
   amount?: AmountInput | null;
   collectLimit?: null | string;
@@ -56,7 +50,7 @@ export type PublicationTip = {
   tipped: boolean;
 };
 
-export type PollOption = {
+type PollOption = {
   id: string;
   option: string;
   percentage: number;
@@ -79,14 +73,7 @@ export type Preferences = {
   permissions: string[];
 };
 
-export type Pro = {
-  isPro: boolean;
-  expiresAt: Date | null;
-};
-
-export type InternalProfile = Preferences & {
-  pro: Pro | null;
-};
+export type InternalProfile = Preferences;
 
 export type ProfileTheme = {
   overviewFontStyle?: string;
@@ -95,7 +82,6 @@ export type ProfileTheme = {
 
 export type ProfileDetails = {
   isSuspended: boolean;
-  pro: Pro | null;
   status: { emoji: string; message: string } | null;
   theme: ProfileTheme | null;
 };

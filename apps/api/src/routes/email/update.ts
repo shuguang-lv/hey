@@ -6,10 +6,10 @@ import logger from "@hey/helpers/logger";
 import parseJwt from "@hey/helpers/parseJwt";
 import type { Request, Response } from "express";
 import catchedError from "src/helpers/catchedError";
+import sendEmail from "src/helpers/email/sendEmail";
 import { rateLimiter } from "src/helpers/middlewares/rateLimiter";
 import validateLensAccount from "src/helpers/middlewares/validateLensAccount";
 import { invalidBody, noBody } from "src/helpers/responses";
-import sendEmail from "src/helpers/sendEmail";
 import { v4 as uuid } from "uuid";
 import { boolean, object, string } from "zod";
 
@@ -76,20 +76,20 @@ export const post = [
 
       sendEmail({
         body: `
-        <html>
-          <body>
-            <p>Welcome to Hey!</p> 
-            <br>
-            <p>Please click the link below to verify your email address: ${result.email}</p>
-            <a href="https://api.hey.xyz/email/verify?token=${result.verificationToken}">Verify Email →</a>
-            <br>
-            <p>If you didn't request this email, please ignore this email.</p>
-            <br>
-            <p>Thanks,</p>
-            <p>${APP_NAME} team</p>
-          </body>
-        </html>
-      `,
+          <html>
+            <body>
+              <p>Welcome to Hey!</p> 
+              <br>
+              <p>Please click the link below to verify your email address: ${result.email}</p>
+              <a href="https://api.hey.xyz/email/verify?token=${result.verificationToken}">Verify Email →</a>
+              <br>
+              <p>If you didn't request this email, please ignore this email.</p>
+              <br>
+              <p>Thanks,</p>
+              <p>${APP_NAME} team</p>
+            </body>
+          </html>
+        `,
         recipient: result.email,
         subject: `Verify your ${APP_NAME} email address`
       });

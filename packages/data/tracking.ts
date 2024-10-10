@@ -147,9 +147,7 @@ export const SETTINGS = {
   },
   PREFERENCES: {
     TOGGLE_HIGH_SIGNAL_NOTIFICATION_FILTER:
-      "Toggle high signal notification filter"
-  },
-  PRO: {
+      "Toggle high signal notification filter",
     APP_ICON: "Update app icon"
   },
   PROFILE: {
@@ -159,11 +157,6 @@ export const SETTINGS = {
   SESSIONS: {
     REVOKE: "Revoke session"
   }
-};
-
-export const INVITE = {
-  INVITE: "Invite address",
-  OPEN_INVITE: "Open invite modal"
 };
 
 export const MESSAGES = {
@@ -242,7 +235,6 @@ export const ALL_EVENTS = {
   ...HOME,
   ...EXPLORE,
   ...SETTINGS,
-  ...INVITE,
   ...MESSAGES,
   ...GARDENER,
   ...STAFFTOOLS,

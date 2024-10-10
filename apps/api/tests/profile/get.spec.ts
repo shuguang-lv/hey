@@ -1,8 +1,4 @@
-import {
-  TEST_LENS_ID,
-  TEST_PRO_LENS_ID,
-  TEST_SUSPENDED_LENS_ID
-} from "@hey/data/constants";
+import { TEST_LENS_ID, TEST_SUSPENDED_LENS_ID } from "@hey/data/constants";
 import { delRedis } from "@hey/db/redisClient";
 import axios from "axios";
 import { TEST_URL } from "tests/helpers/constants";
@@ -17,28 +13,13 @@ describe("GET /profile/get", () => {
     }
   });
 
-  test("should return 200 with null pro, status, and theme if not pro", async () => {
+  test("should return 200 with status and theme", async () => {
+    await delRedis(`profile:${TEST_LENS_ID}`);
     const { data, status } = await axios.get(`${TEST_URL}/profile/get`, {
       params: { id: TEST_LENS_ID }
     });
 
     expect(status).toBe(200);
-    expect(data.result.pro).toBeNull();
-    expect(data.result.status).toBeNull();
-    expect(data.result.theme).toBeNull();
-    expect(data.result.isSuspended).toBe(false);
-  });
-
-  test("should return 200 with pro, status, and theme if pro", async () => {
-    await delRedis(`profile:${TEST_PRO_LENS_ID}`);
-    const { data, status } = await axios.get(`${TEST_URL}/profile/get`, {
-      params: { id: TEST_PRO_LENS_ID }
-    });
-
-    console.log(data);
-
-    expect(status).toBe(200);
-    expect(data.result.pro.isPro).toBeTruthy();
     expect(data.result.status.emoji).toBe("😀");
     expect(data.result.status.message).toBe("Status message");
     expect(data.result.theme.overviewFontStyle).toBe("archivo");
