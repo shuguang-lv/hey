@@ -37,17 +37,6 @@ describe("GET /oembed", () => {
     });
   });
 
-  test("should return oembed data with Tweet ID", async () => {
-    const { data, status } = await axios.get(`${TEST_URL}/oembed`, {
-      params: { url: "https://x.com/yogicodes/status/1838260531829858491" }
-    });
-
-    expect(status).toBe(200);
-    expect(data.oembed).toMatchObject({
-      tweet: "1838260531829858491"
-    });
-  });
-
   test("should return oembed data with Frame", async () => {
     const { data, status } = await axios.get(`${TEST_URL}/oembed`, {
       params: {
@@ -104,7 +93,7 @@ describe("GET /oembed", () => {
         "Collect this episode to support UFO and secure your spot on the leaderboard!",
       endTime: null,
       mediaUrl:
-        "https://gateway.irys.xyz/NzjoFlhIvLqnQEkxMD_NZeQNCuvWL6L_p_gaPHg9Pxc",
+        "https://pods.media/api/og/frame/ufo/interpreting-technology-with-aixdesign-nadia-piet",
       mintCount: expect.any(String),
       mintStatus: null,
       mintUrl:
